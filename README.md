@@ -45,4 +45,5 @@ The `footer` and `menu` are fetched server-side as HTML and passed as `string` t
 
 ### Caveats
 
-Micro-frontends can contain links with relative URL's. These need to be handled correctly.
+- Micro-frontends can contain links with relative URL's. These need to be handled correctly.
+- Fonts are not included so they need to be loaded separately. In this application that happens in `pages/_document.tsx`
