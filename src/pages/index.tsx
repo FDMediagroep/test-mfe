@@ -24,10 +24,16 @@ export default function Page({ footerHtml, menuHtml }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const footerPromise = fetch("https://fd.nl/mfe/footer").then((res) =>
-    res.text()
-  );
-  const menuPromise = fetch("https://fd.nl/mfe/menu").then((res) => res.text());
+  const footerPromise = fetch("https://fd.nl/mfe/footer")
+    .then((res) => res.text())
+    .then((html) => {
+      return html.replaceAll(' href="/', ' href="https://fd.nl/');
+    });
+  const menuPromise = fetch("https://fd.nl/mfe/menu")
+    .then((res) => res.text())
+    .then((html) => {
+      return html.replaceAll(' href="/', ' href="https://fd.nl/');
+    });
 
   const [footerHtml, menuHtml] = await Promise.all([
     footerPromise,
