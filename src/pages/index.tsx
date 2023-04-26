@@ -33,6 +33,9 @@ export const getStaticProps: GetStaticProps = async () => {
     .then((res) => res.text())
     .then((html) => {
       return html.replaceAll(' href="/', ' href="https://fd.nl/');
+    })
+    .then((html) => {
+      return html.replaceAll(' action="/', ' action="https://fd.nl/');
     });
 
   const [footerHtml, menuHtml] = await Promise.all([

@@ -42,3 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
 ```
 
 The `footer` and `menu` are fetched server-side as HTML and passed as `string` to the page as `props`. The page then renders the strings as inline-HTML.
+
+### Caveats
+
+Micro-frontends can contain links with relative URL's. These need to be handled correctly.
