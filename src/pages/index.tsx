@@ -27,14 +27,17 @@ export const getStaticProps: GetStaticProps = async () => {
   const footerPromise = fetch("https://fd.nl/mfe/footer")
     .then((res) => res.text())
     .then((html) => {
+      // Handle anchors with relative URL's
       return html.replaceAll(' href="/', ' href="https://fd.nl/');
     });
   const menuPromise = fetch("https://fd.nl/mfe/menu")
     .then((res) => res.text())
     .then((html) => {
+      // Handle anchors with relative URL's
       return html.replaceAll(' href="/', ' href="https://fd.nl/');
     })
     .then((html) => {
+      // Handle form action with relative URL's
       return html.replaceAll(' action="/', ' action="https://fd.nl/');
     });
 
