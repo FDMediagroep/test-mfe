@@ -24,10 +24,12 @@ export default function Page({ footerHtml, menuHtml }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const footerPromise = fetch("https://fd.nl/mfe/footer").then((res) =>
+  const footerPromise = await fetch("https://fd.nl/mfe/footer").then((res) =>
     res.text()
   );
-  const menuPromise = fetch("https://fd.nl/mfe/menu").then((res) => res.text());
+  const menuPromise = await fetch("https://fd.nl/mfe/menu").then((res) =>
+    res.text()
+  );
 
   const [footerHtml, menuHtml] = await Promise.all([
     footerPromise,
